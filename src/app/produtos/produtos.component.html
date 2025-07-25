@@ -1,0 +1,10 @@
+<app-banner></app-banner>
+<div class="produtos-container">
+  <div class="produto" *ngFor="let album of albums">
+    <img class="produto__img" [src]="album.imageUrl" [alt]="album.title">
+    <div class="produto__name produto__item">{{ album.title }}</div>
+    <div class="produto__price produto__item">R$ {{ album.price | number:'1.2-2' }}/Un.</div>
+    <button class="add-cart" (click)="addToCart(album)">🛒 Adicionar ao Carrinho</button>
+  </div>
+</div>
+

@@ -1,0 +1,114 @@
+// .topbar {
+//   height: 3.75rem;
+//   background: #A7C7E7; /* azul pastel */
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding: 0 1.5rem;
+//   transition: left 0.3s ease;
+//   z-index: 300;
+//   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+//   font-family: 'Poppins', sans-serif;
+// }
+
+// .topbar .user-info {
+//   display: flex;
+//   align-items: center;
+//   gap: 0.5rem;
+// }
+
+// .topbar .avatar {
+//     width: 9rem;
+//     height: 9rem;
+//     border-radius: 50%;
+// }
+
+// .topbar .store-text {
+//   font-size: 1rem;
+//   color: #fff;
+//   font-family: 'Press Start 2P', cursive;
+//   text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+// }
+
+// .topbar .logout,
+// .topbar .carrinho {
+//   background: none;
+//   border: none;
+//   cursor: pointer;
+//   color: #fff;
+//   font-size: 0.9rem;
+//   margin-left: 1rem;
+//   transition: color 0.3s ease;
+// }
+
+// .topbar .logout:hover {
+//   color: #FADADD; /* rosa pastel */
+// }
+
+// .topbar .carrinho:hover {
+//   color: #E6DAF0; /* roxo pastel */
+// }
+
+// .carrinho {
+//   position: relative;
+//   font-size: 1.2rem;
+// }
+
+// .contador {
+//   position: absolute;
+//   top: -6px;
+//   right: -10px;
+//   background-color: #FADADD;
+//   color: #333;
+//   border-radius: 50%;
+//   padding: 2px 6px;
+//   font-size: 0.60rem;
+//   font-weight: bold;
+// }
+
+
+.site-header {
+  background-color: #ffc2d1;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    height: 90px;
+    border-radius: 50%;
+  }
+
+  .site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #7c4d7c;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+    cursor: pointer;
+
+    .nav-link {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2e2e2e;
+
+      &:hover {
+        color: #bc7a96;
+      }
+    }
+  }
+}

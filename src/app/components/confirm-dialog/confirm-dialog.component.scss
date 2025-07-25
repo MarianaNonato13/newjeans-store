@@ -1,0 +1,62 @@
+.remover-modal {
+  display: block;
+  padding: 24px;
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  background-color: #fefafa;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+mat-dialog-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff9aa2;
+  margin-bottom: 16px;
+}
+
+mat-dialog-content {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  padding: 0 12px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+mat-dialog-actions button {
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  padding: 8px 20px;
+  font-size: 14px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+mat-dialog-actions button[color="warn"] {
+  background: linear-gradient(135deg, #ffb7b2, #ff9aa2);
+  color: white;
+}
+
+mat-dialog-actions button[color="warn"]:hover {
+  filter: brightness(1.08);
+}
+
+mat-dialog-actions button:not([color="warn"]) {
+  background-color: #b5ead7;
+  color: #00675b;
+}
+
+mat-dialog-actions button:not([color="warn"]):hover {
+  background-color: #a0dac6;
+}

@@ -1,0 +1,27 @@
+
+<div class="cart">
+  <h2>🛒 Carrinho</h2>
+  <div class="cartProduct" *ngFor="let item of items">
+    <img [src]="item.imageUrl" [alt]="item.title" class="imagem-album" />
+    <p>{{ item.title }} (x{{ item.quantity }}) - R$ {{ item.price * item.quantity! | number:'1.2-2' }}</p>
+
+  <div class="acao-carrinho">
+    <div class="quantidade">
+      <button (click)="diminuirQuantidade(item)">–</button>
+      <span>{{ item.quantity }}</span>
+      <button (click)="aumentarQuantidade(item)">+</button>
+    </div>
+
+    <button class="buttonRemove" (click)="removeItem(item.id)">Remover</button>
+    </div>
+  </div>
+  <div *ngIf="items.length === 0" class="carrinho-vazio">
+    <img src="assets/images/newjeansbunny.gif" alt="Carrinho vazio" class="gif-carrinho">
+    <p>Seu carrinho está vazio. Que tal dar uma olhada nos álbuns?</p>
+    <a routerLink="/produtos" class="btn-voltar">Ver produtos</a>
+  </div>
+
+  <p class="total-text" *ngIf="items.length > 0"><strong>Total:</strong> R$ {{ getTotal() | number:'1.2-2' }}</p>
+  <button class="buttonClean" *ngIf="items.length > 0" (click)="clearCart()">Limpar Carrinho</button>
+
+</div>

@@ -1,0 +1,107 @@
+.cart {
+  background-color: #fff6ec;
+  color: #333;
+  max-width: 1000px;
+  margin: 4rem auto;
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  font-family: 'Outfit', 'Poppins', sans-serif;
+}
+
+.cart h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: bold;
+  color: #7c4d7c;
+  margin-bottom: 1.5rem;
+}
+
+.cartProduct {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.imagem-album {
+  width: 80px;
+  border-radius: 1rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.acao-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.quantidade {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantidade button {
+  background-color: #e0bbff;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.quantidade button:hover {
+  background-color: #d1a5ff;
+}
+
+.quantidade span {
+  font-size: 16px;
+  font-weight: bold;
+  width: 24px;
+  text-align: center;
+}
+
+.buttonRemove,
+.buttonClean,
+.btn-voltar {
+  background-color: #ffc2d1;
+  color: #2e2e2e;
+  padding: 10px 16px;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.buttonRemove:hover,
+.buttonClean:hover,
+.btn-voltar:hover {
+  background-color: #ff99bb;
+  transform: scale(1.03);
+}
+
+.total-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: right;
+  margin-top: 1.5rem;
+}
+
+.carrinho-vazio {
+  text-align: center;
+  margin-top: 3rem;
+  color: #555;
+}
+
+.gif-carrinho {
+  width: 160px;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+}
