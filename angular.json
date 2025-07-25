@@ -34,7 +34,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "baseHref": "/newjeans_store/",
+            "baseHref": "/newjeans-store/",
              "allowedCommonJsDependencies": ["sweetalert2"]
           },
           "configurations": {
