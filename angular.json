@@ -33,15 +33,17 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "/newjeans-store/",
+             "allowedCommonJsDependencies": ["sweetalert2"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                "type": "initial",
+                "maximumWarning": "60kb",
+                "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -99,8 +101,12 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
   }
 }
+

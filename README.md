@@ -1,27 +1,39 @@
-# ProjetoCompras
+# 💿 NewJeans Store 🐰
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+Bem-vindo(a) à **NewJeans Store**, uma loja fictícia e super fofa feita com 💖 usando **Angular**!  
+Aqui você pode explorar os álbuns da NewJeans com visual pastel, minimalista e inspirado no conceito do álbum **Get Up**.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🛍️ Funcionalidades
 
-## Code scaffolding
+- Listagem de álbuns oficiais em cards estilo *photocard*
+- Carrinho de compras estilizado em tons pastel
+- SweetAlerts com o coelhinho Tokki para mensagens ✨
+- Banner com vídeo em loop no estilo NewJeans/ADOR
+- Layout responsivo e leve 💗
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 📸 Preview
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![preview](https://github.com/seu-usuario/newjeans-store/assets/banner-preview.jpg)
 
-## Running unit tests
+> 💡 *Insira uma imagem ou GIF aqui mostrando a loja no navegador!*
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🚀 Deploy no GitHub Pages
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Este projeto está disponível em:  
+🌐 [https://seu-usuario.github.io/newjeans-store/](https://seu-usuario.github.io/newjeans-store/)
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 📦 Como rodar localmente
+
+```bash
+git clone https://github.com/seu-usuario/newjeans-store.git
+cd newjeans-store
+npm install
+ng serve
