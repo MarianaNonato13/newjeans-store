@@ -19,12 +19,12 @@ export class CartService {
 
   private atualizarLocalStorage(): void {
     localStorage.setItem('carrinho', JSON.stringify(this.items));
-    this.itemsSubject.next(this.items); // atualiza o observable
+    this.itemsSubject.next(this.items);
   }
   items$ = this.itemsSubject.asObservable();
 
   addItem(item: Album) {
-    const existing = this.items.find(i => i.id === item.id);
+    const existing = this.items.find(i => i.id === item.id && i.selectedVersion === item.selectedVersion);
     if (existing) {
       existing.quantity = (existing.quantity || 1) + 1;
     } else {
@@ -32,7 +32,7 @@ export class CartService {
       this.items.push(item);
     }
     this.atualizarLocalStorage();
-    this.itemsSubject.next(this.items); // 🔁 atualiza observadores
+    this.itemsSubject.next(this.items);
   }
 
   getItems(): Album[] {
@@ -45,8 +45,8 @@ export class CartService {
     this.atualizarLocalStorage();
   }
 
-  removeItem(id: number) {
-    this.items = this.items.filter(item => item.id !== id);
+  removeItem(itemToRemove: Album) {
+    this.items = this.items.filter(item => !(item.id === itemToRemove.id && item.selectedVersion === itemToRemove.selectedVersion));
     this.itemsSubject.next(this.items);
     this.atualizarLocalStorage();
   }
@@ -55,7 +55,7 @@ export class CartService {
   const index = this.items.findIndex(i => i.id === updated.id);
   if (index !== -1) {
     this.items[index] = { ...updated };
-    this.atualizarLocalStorage(); // atualiza observable e localStorage
+    this.atualizarLocalStorage();
   }
 }
 }

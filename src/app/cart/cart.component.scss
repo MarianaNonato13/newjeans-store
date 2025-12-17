@@ -1,68 +1,101 @@
+
 .cart {
-  background-color: #fff6ec;
-  color: #333;
+  background-color: var(--nj-white);
+  color: var(--nj-dark);
   max-width: 1000px;
   margin: 4rem auto;
-  border-radius: 2rem;
-  padding: 2rem;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
   font-family: 'Outfit', 'Poppins', sans-serif;
+  border: 1px solid rgba(0,0,0,0.02);
 }
 
 .cart h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   text-align: center;
-  font-weight: bold;
-  color: #7c4d7c;
-  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: var(--nj-dark);
+  margin-bottom: 2.5rem;
+  letter-spacing: -1px;
 }
 
 .cartProduct {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
   font-weight: 500;
+  background-color: #fcfcfc;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateX(4px);
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+  
+  /* Flex magic to handle title/price vs actions on different screens */
+  flex-wrap: wrap; 
+  p {
+      flex: 1;
+      margin: 0;
+      font-size: 1.05rem;
+      min-width: 200px;
+  }
 }
 
 .imagem-album {
-  width: 80px;
-  border-radius: 1rem;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  width: 90px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  object-fit: cover;
 }
 
 .acao-carrinho {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  width: 100%;
+  gap: 2rem;
+  margin-left: auto;
 }
 
 .quantidade {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  background-color: var(--nj-bg);
+  padding: 4px 12px;
+  border-radius: 50px;
 }
 
 .quantidade button {
-  background-color: #e0bbff;
-  border: none;
-  color: #333;
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  color: var(--nj-dark);
   font-size: 16px;
   width: 32px;
   height: 32px;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.2s;
-}
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.quantidade button:hover {
-  background-color: #d1a5ff;
+  &:hover {
+    background-color: var(--nj-blue);
+    color: white;
+    border-color: var(--nj-blue);
+  }
 }
 
 .quantidade span {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 700;
   width: 24px;
   text-align: center;
 }
@@ -70,38 +103,95 @@
 .buttonRemove,
 .buttonClean,
 .btn-voltar {
-  background-color: #ffc2d1;
-  color: #2e2e2e;
-  padding: 10px 16px;
-  border-radius: 2rem;
+  font-size: 0.9rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-.buttonRemove:hover,
-.buttonClean:hover,
-.btn-voltar:hover {
-  background-color: #ff99bb;
-  transform: scale(1.03);
+.buttonRemove {
+  background-color: #ffe6e6; /* Soft red for remove */
+  color: #d32f2f;
+  margin-left: auto;
+  
+  &:hover {
+      background-color: #ffcccc;
+      transform: scale(1.02);
+  }
+}
+
+.buttonClean {
+    background-color: #f1f1f1;
+    color: #555;
+    margin-top: 1rem;
+    
+    &:hover {
+        background-color: #e0e0e0;
+        color: #333;
+    }
+}
+
+.btn-voltar {
+  background-color: var(--nj-blue);
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  
+  &:hover {
+    background-color: #0046c7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 88, 249, 0.3);
+  }
 }
 
 .total-text {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 800;
   text-align: right;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
+  color: var(--nj-dark);
+  border-top: 2px solid var(--nj-bg);
+  padding-top: 1.5rem;
 }
 
 .carrinho-vazio {
   text-align: center;
-  margin-top: 3rem;
-  color: #555;
+  padding: 3rem 0;
+  color: #666;
+
+  p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+  }
 }
 
 .gif-carrinho {
-  width: 160px;
-  border-radius: 1rem;
-  margin-bottom: 1.5rem;
+  width: 180px;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.buttonCheckout {
+  @extend .btn-voltar; // Re-use the nice blue button path
+  font-size: 1rem;
+  padding: 0.8rem 2rem;
+  margin-top: 0; // Reset margin since it's in flex container
+}
+
+// Update buttonClean to remove margin-top if inside actions
+.cart-actions .buttonClean {
+  margin-top: 0;
 }

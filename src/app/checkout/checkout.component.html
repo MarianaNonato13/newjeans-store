@@ -1,0 +1,172 @@
+<div class="checkout-container">
+  <div class="checkout-grid">
+    <!-- Left Column: Forms -->
+    <div class="forms-section">
+      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        <!-- Shipping Address -->
+        <mat-card class="checkout-card">
+          <mat-card-header>
+            <mat-icon mat-card-avatar>local_shipping</mat-icon>
+            <mat-card-title>Endereço de Entrega</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Nome</mat-label>
+                <input
+                  matInput
+                  formControlName="firstName"
+                  placeholder="Seu nome"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Sobrenome</mat-label>
+                <input
+                  matInput
+                  formControlName="lastName"
+                  placeholder="Seu sobrenome"
+                />
+              </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>E-mail</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                placeholder="seu@email.com"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Endereço</mat-label>
+              <input
+                matInput
+                formControlName="street"
+                placeholder="Rua, Av..."
+              />
+            </mat-form-field>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Cidade</mat-label>
+                <input matInput formControlName="city" />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Estado</mat-label>
+                <input matInput formControlName="state" />
+              </mat-form-field>
+            </div>
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>CEP</mat-label>
+                <input matInput formControlName="zip" />
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Payment Method -->
+        <mat-card class="checkout-card">
+          <mat-card-header>
+            <mat-icon mat-card-avatar>payment</mat-icon>
+            <mat-card-title>Forma de Pagamento</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-radio-group
+              formControlName="paymentMethod"
+              class="payment-methods"
+            >
+              <mat-radio-button value="credit_card"
+                >Cartão de Crédito</mat-radio-button
+              >
+              <mat-radio-button value="pix">PIX</mat-radio-button>
+              <mat-radio-button value="boleto"
+                >Boleto Bancário</mat-radio-button
+              >
+            </mat-radio-group>
+
+            <div
+              *ngIf="checkoutForm.get('paymentMethod')?.value === 'credit_card'"
+              class="credit-card-form"
+            >
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Nome no Cartão</mat-label>
+                <input matInput formControlName="cardName" />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Número do Cartão</mat-label>
+                <input matInput formControlName="cardNumber" />
+              </mat-form-field>
+              <div class="form-row">
+                <mat-form-field appearance="outline" class="half-width">
+                  <mat-label>Validade (MM/AA)</mat-label>
+                  <input matInput formControlName="expiry" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="half-width">
+                  <mat-label>CVV</mat-label>
+                  <input matInput formControlName="cvv" />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div
+              *ngIf="checkoutForm.get('paymentMethod')?.value === 'pix'"
+              class="payment-info"
+            >
+              <p>O código PIX será gerado após a confirmação do pedido.</p>
+              <mat-icon class="large-icon">qr_code_2</mat-icon>
+            </div>
+
+            <div
+              *ngIf="checkoutForm.get('paymentMethod')?.value === 'boleto'"
+              class="payment-info"
+            >
+              <p>O boleto será enviado para o seu e-mail.</p>
+              <mat-icon class="large-icon">receipt</mat-icon>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </form>
+    </div>
+
+    <!-- Right Column: Order Summary -->
+    <div class="summary-section">
+      <mat-card class="checkout-card summary-card sticky-summary">
+        <mat-card-header>
+          <mat-card-title>Resumo do Pedido</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="cart-items">
+            <div *ngFor="let item of cartItems" class="cart-item">
+              <div class="item-details">
+                <span class="item-name"
+                  >{{ item.title }} ({{ item.selectedVersion }})</span
+                >
+                <span class="item-quantity">x{{ item.quantity }}</span>
+              </div>
+              <span class="item-price">{{
+                (item.price || 0) * (item.quantity || 1) | currency : "BRL"
+              }}</span>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="total-row">
+            <span>Total</span>
+            <span class="total-amount">{{ total | currency : "BRL" }}</span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            class="full-width-btn"
+            (click)="onSubmit()"
+          >
+            FINALIZAR PEDIDO
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

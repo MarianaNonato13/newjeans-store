@@ -1,114 +1,109 @@
-// .topbar {
-//   height: 3.75rem;
-//   background: #A7C7E7; /* azul pastel */
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: 0 1.5rem;
-//   transition: left 0.3s ease;
-//   z-index: 300;
-//   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-//   font-family: 'Poppins', sans-serif;
-// }
-
-// .topbar .user-info {
-//   display: flex;
-//   align-items: center;
-//   gap: 0.5rem;
-// }
-
-// .topbar .avatar {
-//     width: 9rem;
-//     height: 9rem;
-//     border-radius: 50%;
-// }
-
-// .topbar .store-text {
-//   font-size: 1rem;
-//   color: #fff;
-//   font-family: 'Press Start 2P', cursive;
-//   text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-// }
-
-// .topbar .logout,
-// .topbar .carrinho {
-//   background: none;
-//   border: none;
-//   cursor: pointer;
-//   color: #fff;
-//   font-size: 0.9rem;
-//   margin-left: 1rem;
-//   transition: color 0.3s ease;
-// }
-
-// .topbar .logout:hover {
-//   color: #FADADD; /* rosa pastel */
-// }
-
-// .topbar .carrinho:hover {
-//   color: #E6DAF0; /* roxo pastel */
-// }
-
-// .carrinho {
-//   position: relative;
-//   font-size: 1.2rem;
-// }
-
-// .contador {
-//   position: absolute;
-//   top: -6px;
-//   right: -10px;
-//   background-color: #FADADD;
-//   color: #333;
-//   border-radius: 50%;
-//   padding: 2px 6px;
-//   font-size: 0.60rem;
-//   font-weight: bold;
-// }
-
 
 .site-header {
-  background-color: #ffc2d1;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 
   .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 60px; /* Reduced height/fixed height */
   }
 
   .logo {
-    height: 90px;
-    border-radius: 50%;
+    height: 40px; /* Smaller logo */
+    width: auto;
+    object-fit: contain;
+    /* Optional: if logo needs roundness, keep it, otherwise clean */
+    border-radius: 50%; 
   }
 
   .site-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #7c4d7c;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--nj-dark);
+    margin-left: 1rem;
+    letter-spacing: -0.5px;
   }
-
+  
+  /* Flex spacer to push nav to right if needed, or just justify-between */
+  
   .nav {
     display: flex;
-    gap: 1.5rem;
-    cursor: pointer;
-
+    align-items: center;
+    gap: 2rem;
+    
     .nav-link {
       text-decoration: none;
-      font-weight: 600;
-      color: #2e2e2e;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #666;
+      transition: color 0.2s;
+      position: relative;
 
       &:hover {
-        color: #bc7a96;
+        color: var(--nj-blue);
       }
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: var(--nj-blue);
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
+    .carrinho {
+        cursor: pointer;
+        position: relative;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #f0f2f5;
+        transition: all 0.2s;
+
+        &:hover {
+            background-color: #e4e6eb;
+            color: var(--nj-blue);
+        }
+
+        .contador {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background-color: var(--nj-blue);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            border: 2px solid white;
+        }
     }
   }
 }

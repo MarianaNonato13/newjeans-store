@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { ProductsService } from '../services/products.service';
 import { Album } from '../models/album.model';
 import Swal from 'sweetalert2';
 
@@ -9,17 +10,34 @@ import Swal from 'sweetalert2';
   styleUrls: ['./produtos.component.scss']
 })
 export class ProdutosComponent {
-  albums: Album[] = [
-    { id: 1, title: '1st EP NEWJEANS (Bluebook Ver.)', price: 193.00, imageUrl: 'assets/images/bluebook-ver.png' },
-    { id: 2, title: '2nd EP GET UP (Bunny Beach Bag Ver.)', price: 195.00, imageUrl: 'assets/images/bunny-beach-bag-ver.png' },
-    { id: 3, title: '2nd EP GET UP (NJ Box Ver.)', price: 165.00, imageUrl: 'assets/images/nj-box-ver.png' },
-    { id: 4, title: '2nd EP GET UP (Weverse Album Ver.)', price: 47.00, imageUrl: 'assets/images/weverse-album-ver-getup.png' },
-    { id: 5, title: 'OMG (Weverse Album Ver.)', price: 47.00, imageUrl: 'assets/images/weverse-album-ver-omg.png' }
-  ];
+  albums: Album[] = [];
+  filteredAlbums: Album[] = [];
+  filterCategory: string = 'all';
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private productsService: ProductsService) {}
 
-    addToCart(album: Album): void {
+  ngOnInit(): void {
+    this.productsService.getAlbums().subscribe(data => {
+      this.albums = data;
+      this.filteredAlbums = data; // Initialize filtered list
+    });
+  }
+
+  setFilter(category: string): void {
+    this.filterCategory = category;
+    if (category === 'all') {
+      this.filteredAlbums = this.albums;
+    } else if (category === 'get-up' || category === 'omg' || category === 'supernatural' || category === 'how-sweet' || category === 'newjeans') {
+       // Filter by Title for Eras
+       const searchTerm = category.replace('-', ' '); // 'get-up' -> 'get up'
+       this.filteredAlbums = this.albums.filter(a => a.title.toLowerCase().includes(searchTerm));
+    } else {
+      // Filter by Category
+      this.filteredAlbums = this.albums.filter(a => a.category === category);
+    }
+  }
+
+  addToCart(album: Album): void {
     this.cartService.addItem(album);
     Swal.fire({
       title: '💿 Álbum adicionado!',
@@ -30,7 +48,7 @@ export class ProdutosComponent {
       imageAlt: 'Tokki Bunny',
       confirmButtonText: 'Fechar'
     });
-}
+  }
 }
 
 

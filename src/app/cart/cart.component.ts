@@ -9,6 +9,7 @@ import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dia
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
+
 export class CartComponent implements OnInit {
   items: Album[] = [];
 
@@ -20,16 +21,14 @@ export class CartComponent implements OnInit {
     });
   }
 
-  removeItem(id: number): void {
-    const item = this.items.find(album => album.id === id); // busca o item pelo id
-
+  removeItem(itemToRemove: Album): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: { nomeDoAlbum: item?.title }
+      data: { nomeDoAlbum: itemToRemove.title + (itemToRemove.selectedVersion ? ` [${itemToRemove.selectedVersion}]` : '') }
     });
 
     dialogRef.afterClosed().subscribe(confirmado => {
       if (confirmado) {
-        this.cartService.removeItem(id);
+        this.cartService.removeItem(itemToRemove);
       }
     });
   }
@@ -40,11 +39,20 @@ export class CartComponent implements OnInit {
   }
 
   clearCart(): void {
-    this.cartService.clearCart(); // o subscribe vai limpar a lista
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: { nomeDoAlbum: 'todos os itens' }
+    });
+
+    dialogRef.afterClosed().subscribe(confirmado => {
+      if (confirmado) {
+        this.cartService.clearCart();
+      }
+    });
   }
+
   aumentarQuantidade(item: Album): void {
   item.quantity = (item.quantity || 1) + 1;
-  this.cartService.updateItem(item); // atualiza no serviço
+  this.cartService.updateItem(item);
 }
 
   diminuirQuantidade(item: Album): void {

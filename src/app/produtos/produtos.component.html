@@ -1,10 +1,77 @@
 <app-banner></app-banner>
-<div class="produtos-container">
-  <div class="produto" *ngFor="let album of albums">
-    <img class="produto__img" [src]="album.imageUrl" [alt]="album.title">
-    <div class="produto__name produto__item">{{ album.title }}</div>
-    <div class="produto__price produto__item">R$ {{ album.price | number:'1.2-2' }}/Un.</div>
-    <button class="add-cart" (click)="addToCart(album)">🛒 Adicionar ao Carrinho</button>
-  </div>
+
+<div class="filters-container">
+  <button [class.active]="filterCategory === 'all'" (click)="setFilter('all')">
+    Todos
+  </button>
+  <button
+    [class.active]="filterCategory === 'album'"
+    (click)="setFilter('album')"
+  >
+    Todos os Albums
+  </button>
+
+  <!-- New Era Filters -->
+  <button
+    [class.active]="filterCategory === 'newjeans'"
+    (click)="setFilter('newjeans')"
+  >
+    New Jeans 1st EP
+  </button>
+  <button [class.active]="filterCategory === 'omg'" (click)="setFilter('omg')">
+    OMG
+  </button>
+  <button
+    [class.active]="filterCategory === 'get-up'"
+    (click)="setFilter('get-up')"
+  >
+    Get Up
+  </button>
+  <button
+    [class.active]="filterCategory === 'how-sweet'"
+    (click)="setFilter('how-sweet')"
+  >
+    How Sweet
+  </button>
+  <button
+    [class.active]="filterCategory === 'supernatural'"
+    (click)="setFilter('supernatural')"
+  >
+    Supernatural
+  </button>
+
+  <button
+    [class.active]="filterCategory === 'season-greetings'"
+    (click)="setFilter('season-greetings')"
+  >
+    Season's Greetings
+  </button>
+  <button
+    [class.active]="filterCategory === 'merch'"
+    (click)="setFilter('merch')"
+  >
+    Merch
+  </button>
+  <button
+    [class.active]="filterCategory === 'lightstick'"
+    (click)="setFilter('lightstick')"
+  >
+    Lightstick
+  </button>
 </div>
 
+<div class="produtos-container">
+  <div class="produto" *ngFor="let album of filteredAlbums">
+    <img class="produto__img" [src]="album.imageUrl" [alt]="album.title" />
+    <div class="produto__name produto__item">{{ album.title }}</div>
+    <div class="produto__price produto__item">
+      R$ {{ album.price | number : "1.2-2" }}/Un.
+    </div>
+    <div class="actions">
+      <button class="btn-details" [routerLink]="['/produto', album.id]">
+        Ver sobre ℹ️
+      </button>
+      <button class="add-cart" (click)="addToCart(album)">🛒 Adicionar</button>
+    </div>
+  </div>
+</div>
